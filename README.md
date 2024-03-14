@@ -12,7 +12,7 @@ This project provides a simple tool to convert JSON Schema into PHP array shapes
 
 4. **Copy JSON Schema**: Copy the generated JSON Schema from Quicktype.
 
-5. **Access the Converter**: Visit [our website](https://example.com) where the converter is hosted.
+5. **Access the Converter**: Visit [website](https://plong-wasin.github.io/json-schema-to-php-docstring/).
 
 6. **Paste JSON Schema**: Paste the copied JSON Schema into the designated area on the website.
 
