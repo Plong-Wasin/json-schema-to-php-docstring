@@ -21,16 +21,23 @@
 
 <body>
     <div class="container">
-        <h1>Convert JSON Schema to PHP Array Shapes Docstring</h1>
+        <div style="display: flex; justify-content: space-between">
+            <h1 style="display: inline;">Convert JSON Schema to PHP Array Shapes Docstring</h1>
+            <a href="https://github.com/plong-wasin/json-schema-to-php-docstring"
+                style="margin-top: auto; margin-bottom: auto">
+                Visit github
+            </a>
+        </div>
 
-        <span>Json schema from <a href="https://app.quicktype.io">quicktype</a></span>
+        <span style="padding-left: 2.5%;">Json schema from <a
+                href="https://app.quicktype.io?l=schema">quicktype</a></span>
         <textarea id="input"></textarea>
         <!-- button center -->
         <div style="text-align: center; margin-top: 10px">
             <input type="checkbox" id="includeStar" /><span>include star?</span>
         </div>
         <button id="convertBtn" style="display: block; margin: 10px auto;">Convert</button>
-        <span>Output</span>
+        <span style="padding-left: 2.5%;">Output</span>
         <textarea id="output"></textarea>
         <script src="./src/script.js"></script>
     </div>

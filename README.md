@@ -4,11 +4,11 @@ This project provides a simple tool to convert JSON Schema into PHP array shapes
 
 ## How to Use
 
-1. **Input JSON Data**: Paste your JSON data into [Quicktype](https://app.quicktype.io) (a tool for generating data types and converters from JSON to various programming languages).
+1. **Input JSON Data**: Paste your JSON data into [Quicktype](https://app.quicktype.io?l=schema) (a tool for generating data types and converters from JSON to various programming languages).
 
 2. **Set Language to JSON Schema**: In Quicktype, ensure that you select "JSON Schema" as the output language.
 
-3. **Adjust Settings**: In the "Other" tab of Quicktype, ensure that all options are checked. This ensures the most comprehensive conversion.
+3. **Adjust Settings**: In the "Other" tab of Quicktype, ensure that all options are checked. This ensures the most comprehensive conversion. If you encounter a "RangeError: Maximum call stack size exceeded" error after clicking "Convert" on converter website, go back to Quicktype and uncheck "Merge similar classes" in the "Other" tab.
 
 4. **Copy JSON Schema**: Copy the generated JSON Schema from Quicktype.
 

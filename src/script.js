@@ -1,282 +1,3 @@
-const jsonSchema = {
-    $schema: "http://json-schema.org/draft-06/schema#",
-    $ref: "#/definitions/Welcome",
-    definitions: {
-        Welcome: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                data: {
-                    type: "array",
-                    items: {
-                        $ref: "#/definitions/Datum",
-                    },
-                },
-                links: {
-                    $ref: "#/definitions/Links",
-                },
-                meta: {
-                    $ref: "#/definitions/Meta",
-                },
-            },
-            required: ["data", "links", "meta"],
-            title: "Welcome",
-        },
-        Datum: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                id: {
-                    type: "string",
-                },
-                title: {
-                    $ref: "#/definitions/Title",
-                },
-                regular_price: {
-                    type: "integer",
-                },
-                discounted_price: {
-                    type: "integer",
-                },
-                shop: {
-                    $ref: "#/definitions/Shop",
-                },
-                parent_id: {
-                    type: "null",
-                },
-                created_at: {
-                    type: "string",
-                    format: "date-time",
-                },
-                updated_at: {
-                    type: "string",
-                    format: "date-time",
-                },
-                thumb_url: {
-                    type: "string",
-                    format: "uri",
-                    "qt-uri-protocols": ["https"],
-                    "qt-uri-extensions": [".jpg", ".png"],
-                },
-                sale_count: {
-                    type: "integer",
-                },
-                rating: {
-                    anyOf: [
-                        {
-                            type: "integer",
-                        },
-                        {
-                            type: "null",
-                        },
-                    ],
-                },
-                free_shipping: {
-                    type: "boolean",
-                },
-                is_cod: {
-                    type: "boolean",
-                },
-            },
-            required: [
-                "created_at",
-                "discounted_price",
-                "free_shipping",
-                "id",
-                "is_cod",
-                "parent_id",
-                "rating",
-                "regular_price",
-                "sale_count",
-                "shop",
-                "thumb_url",
-                "title",
-                "updated_at",
-            ],
-            title: "Datum",
-        },
-        Shop: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                id: {
-                    type: "integer",
-                },
-                name: {
-                    type: "string",
-                },
-                address: {
-                    type: "string",
-                },
-                slug: {
-                    type: "string",
-                },
-                is_thp_shop: {
-                    type: "boolean",
-                },
-                created_at: {
-                    type: "string",
-                    format: "date-time",
-                },
-                updated_at: {
-                    anyOf: [
-                        {
-                            type: "string",
-                            format: "date-time",
-                        },
-                        {
-                            type: "null",
-                        },
-                    ],
-                },
-                logo_url: {
-                    anyOf: [
-                        {
-                            type: "null",
-                        },
-                        {
-                            type: "string",
-                            format: "uri",
-                            "qt-uri-protocols": ["https"],
-                            "qt-uri-extensions": [".png"],
-                        },
-                    ],
-                },
-            },
-            required: [
-                "address",
-                "created_at",
-                "id",
-                "is_thp_shop",
-                "logo_url",
-                "name",
-                "slug",
-                "updated_at",
-            ],
-            title: "Shop",
-        },
-        Title: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                th: {
-                    type: "string",
-                },
-                en: {
-                    anyOf: [
-                        {
-                            type: "null",
-                        },
-                        {
-                            type: "string",
-                        },
-                    ],
-                },
-            },
-            required: ["en", "th"],
-            title: "Title",
-        },
-        Links: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                first: {
-                    type: "string",
-                    format: "uri",
-                    "qt-uri-protocols": ["http"],
-                },
-                last: {
-                    type: "string",
-                    format: "uri",
-                    "qt-uri-protocols": ["http"],
-                },
-                prev: {
-                    type: "null",
-                },
-                next: {
-                    type: "string",
-                    format: "uri",
-                    "qt-uri-protocols": ["http"],
-                },
-            },
-            required: ["first", "last", "next", "prev"],
-            title: "Links",
-        },
-        Meta: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                current_page: {
-                    type: "integer",
-                },
-                from: {
-                    type: "integer",
-                },
-                last_page: {
-                    type: "integer",
-                },
-                links: {
-                    type: "array",
-                    items: {
-                        $ref: "#/definitions/Link",
-                    },
-                },
-                path: {
-                    type: "string",
-                    format: "uri",
-                    "qt-uri-protocols": ["http"],
-                },
-                per_page: {
-                    type: "integer",
-                },
-                to: {
-                    type: "integer",
-                },
-                total: {
-                    type: "integer",
-                },
-            },
-            required: [
-                "current_page",
-                "from",
-                "last_page",
-                "links",
-                "path",
-                "per_page",
-                "to",
-                "total",
-            ],
-            title: "Meta",
-        },
-        Link: {
-            type: "object",
-            additionalProperties: false,
-            properties: {
-                url: {
-                    anyOf: [
-                        {
-                            type: "null",
-                        },
-                        {
-                            type: "string",
-                            format: "uri",
-                            "qt-uri-protocols": ["http"],
-                        },
-                    ],
-                },
-                label: {
-                    type: "string",
-                },
-                active: {
-                    type: "boolean",
-                },
-            },
-            required: ["active", "label", "url"],
-            title: "Link",
-        },
-    },
-};
-
 function getTitleByRef(ref) {
     const refSplit = ref.split("/");
     return refSplit[refSplit.length - 1];
@@ -299,42 +20,75 @@ function generateOutput(definitions, json) {
     if (json.type === "object") {
         output += "{\n";
     }
-    for (const propertyKey in json.properties) {
-        const notRequiredStr = json.required.includes(propertyKey) ? "" : "?";
-        output += `${propertyKey}${notRequiredStr}: `;
-        if (
-            json.properties[propertyKey].type &&
-            json.properties[propertyKey].type !== "array"
-        ) {
-            output += `${json.properties[propertyKey].type},\n`;
-        } else if (json.properties[propertyKey].$ref) {
-            output += `${generateOutput(
-                definitions,
-                definitions[getTitleByRef(json.properties[propertyKey].$ref)]
-            )}`;
-        } else if (json.anyOf) {
-            output += json.anyOf.map((t) => t.type).join(" | ");
-        } else if (
-            json.properties[propertyKey].type &&
-            json.properties[propertyKey].type === "array"
-        ) {
-            if (json.properties[propertyKey].items.type) {
-                output += `${json.properties[propertyKey].items.type},\n`;
-            } else if (json.properties[propertyKey].items.$ref) {
+    if (json.properties) {
+        for (const propertyKey in json.properties) {
+            const notRequiredStr = json.required.includes(propertyKey)
+                ? ""
+                : "?";
+            output += `${propertyKey}${notRequiredStr}: `;
+            if (
+                json.properties[propertyKey].type &&
+                !["array", "object"].includes(json.properties[propertyKey].type)
+            ) {
+                output +=
+                    json.properties[propertyKey].type === "number"
+                        ? "float"
+                        : json.properties[propertyKey].type;
+                output += `,\n`;
+            } else if (json.properties[propertyKey].$ref) {
+                if (propertyKey === "name") {
+                    console.log(json.properties[propertyKey]);
+                }
                 output += `${generateOutput(
                     definitions,
                     definitions[
-                        getTitleByRef(json.properties[propertyKey].items.$ref)
+                        getTitleByRef(json.properties[propertyKey].$ref)
                     ]
                 )}`;
+            } else if (json.anyOf) {
+                output += json.anyOf.map((t) => t.type).join(" | ");
+            } else if (
+                json.properties[propertyKey].type &&
+                ["array", "object"].includes(json.properties[propertyKey].type)
+                // json.properties[propertyKey].type === "array"
+            ) {
+                if (json.properties[propertyKey]?.items?.type) {
+                    output += `${json.properties[propertyKey].items.type},\n`;
+                } else if (json.properties[propertyKey]?.items?.$ref) {
+                    output += `${generateOutput(
+                        definitions,
+                        definitions[
+                            getTitleByRef(
+                                json.properties[propertyKey].items.$ref
+                            )
+                        ]
+                    )}`;
+                } else if (
+                    json.properties[propertyKey]?.additionalProperties?.$ref
+                ) {
+                    output += `${generateOutput(
+                        definitions,
+                        definitions[
+                            getTitleByRef(
+                                json.properties[propertyKey]
+                                    .additionalProperties.$ref
+                            )
+                        ]
+                    )}`;
+                } else {
+                    output += "mixed,\n";
+                }
+                output = replaceLast(output, ",\n", "[],\n");
+            } else if (json.properties[propertyKey].anyOf) {
+                output +=
+                    json.properties[propertyKey].anyOf
+                        .map((t) => t.type)
+                        .join(" | ") + ",\n";
             }
-            output = replaceLast(output, ",\n", "[],\n");
-        } else if (json.properties[propertyKey].anyOf) {
-            output +=
-                json.properties[propertyKey].anyOf
-                    .map((t) => t.type)
-                    .join(" | ") + ",\n";
         }
+    } else {
+        output += json.type === "number" ? "float" : json.type;
+        output += `,\n`;
     }
     if (json.type === "object") {
         output += "},\n";
