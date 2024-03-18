@@ -86,6 +86,11 @@ function generateOutput(definitions, json) {
                         .join(" | ") + ",\n";
             }
         }
+    } else if (json.enum) {
+        output +=
+            json.enum
+                .map((e) => (typeof e === "string" ? `"${e}"` : e))
+                .join("|") + ",\n";
     } else {
         output += json.type === "number" ? "float" : json.type;
         output += `,\n`;
