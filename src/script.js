@@ -25,7 +25,11 @@ function generateOutput(definitions, json) {
             const notRequiredStr = json.required.includes(propertyKey)
                 ? ""
                 : "?";
-            output += `"${propertyKey}"${notRequiredStr}: `;
+            if (propertyKey.includes(" ")) {
+                output += `${propertyKey}${notRequiredStr}: `;
+            }else{
+                output += `"${propertyKey}"${notRequiredStr}: `;
+            }
             if (
                 json.properties[propertyKey].type &&
                 !["array", "object"].includes(json.properties[propertyKey].type)
