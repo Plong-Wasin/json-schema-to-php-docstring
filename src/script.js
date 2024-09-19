@@ -133,6 +133,9 @@ function generateSchema(jsonSchema, targetName = null, addStar = false) {
         generatedOutput.replaceAll("{", "array{"),
         addStar
     );
+    if (jsonSchema.type === "array") {
+        return formattedOutput + "[]";
+    }
     return formattedOutput;
 }
 function isJsonString(str) {
